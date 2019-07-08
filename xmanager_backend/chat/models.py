@@ -36,7 +36,8 @@ class Message(models.Model):
 class Chat(models.Model):
     participants = models.ManyToManyField(Profile, related_name = 'chats')
     messages = models.ManyToManyField(Message, blank = True)
-
+    isGroup = models.BooleanField(default = False)
+    name = models.CharField(blank = True, max_length=50)
     def get_current_chat(chatId):
         return get_object_or_404(Chat, id=chatId)
 
@@ -49,7 +50,9 @@ class Chat(models.Model):
 
     def createchat(request):
         chat = Chat.objects.create(
-            participants = request.data.get('participants')
+            participants = request.data.get('participants'),
+            isGroup = request.data.get('isGroup'),
+            name= request.data.get('name')
         )
         chat.save()
         return ('ok')
