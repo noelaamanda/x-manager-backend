@@ -27,4 +27,6 @@ urlpatterns = [
     path('api/getkeys/', keys),
     path('api/register/', create),
     path('chat/', include('chat.api.urls')),
+    path('task/', include('task.api.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

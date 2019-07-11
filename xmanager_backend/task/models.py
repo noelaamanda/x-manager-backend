@@ -11,7 +11,7 @@ class Tasks(models.Model):
     name = models.CharField(blank=False, max_length=50)
     created = models.TimeField(auto_now_add=True)
     estimation = models.DurationField()
-    start = models.TimeField()
+    start = models.DateField()
 
 
 class Projects(models.Model):
