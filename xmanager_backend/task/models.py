@@ -12,6 +12,7 @@ class Tasks(models.Model):
     created = models.TimeField(auto_now_add=True)
     estimation = models.DurationField()
     start = models.DateField()
+    Description = models.TextField(blank = False, default= 'No Description Yet')
 
 
 class Projects(models.Model):
